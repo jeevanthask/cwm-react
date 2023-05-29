@@ -1,0 +1,4 @@
+our components should be pure components
+-should return the same result if we give the same input
+
+--> to keep components pure keep changes out of the render phase 

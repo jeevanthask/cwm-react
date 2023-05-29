@@ -1,0 +1,6 @@
+there are mainly 4 ways for styling
+
+01)vanilla css
+02)css modules
+03)css in js
+04)using css libraries
