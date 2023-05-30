@@ -1,8 +1,18 @@
 import React, { FormEvent } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 
+interface FormData {
+  firstname: string;
+  age: string;
+}
+
 function MyForm3() {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>();
+  //  formState: { errors }, this is nested destructuring in js
 
   const onSubmit = (data: FieldValues) => {
     console.log(data);
@@ -15,11 +25,14 @@ function MyForm3() {
         <div className="mb-3">
           <label className="form-label">Name</label>
           <input
-            {...register("firstname")}
+            {...register("firstname", { required: true, minLength: 3 })}
             type="text"
             className="form-control"
-            id="name"
+            id="firstname"
           />
+          {errors.firstname?.type === "required" && (
+            <p className="text-danger">the name field is required</p>
+          )}
         </div>
         <div className="mb-3">
           <label className="form-label">Age</label>
